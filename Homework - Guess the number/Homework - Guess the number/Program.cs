@@ -12,24 +12,36 @@ namespace Homework___Guess_the_number
         {
             Random r = new Random();
             int g = r.Next(0, 100);
+            int t = 0;
+            bool ok = false;
 
-            Console.WriteLine("Enter a number: ");
+            Console.WriteLine("You have 10 tries to guess the number. Enter a number.");
             int n = int.Parse(Console.ReadLine());
 
-            while (n!=g)
+            while (t < 9 && ok==false)
             {
+                t++;
                 if (n < g)
                 {
-                    Console.WriteLine("Number is too small. Enter another number: ");
+                    Console.WriteLine("Number is too small. You have {0} tries left. Enter another number: ", 10-t);
+                    n = int.Parse(Console.ReadLine());
+                } else if (n > g)
+                {
+                    Console.WriteLine("Number is too big. You have {0} tries left. Enter another number: ", 10 - t);
                     n = int.Parse(Console.ReadLine());
                 } else
                 {
-                    Console.WriteLine("Number is too big. Enter another number: ");
-                    n = int.Parse(Console.ReadLine());
+                    ok = true;
                 }
             }
 
-            Console.WriteLine("Yuhuu! You guessed the number!");
+            if (ok == true) {
+                Console.WriteLine("Yuhuu! You guessed the number!");
+            } else
+            {
+                Console.WriteLine("Sorry! You've reached the max number of tries. The number was: {0}", g);
+            }
+            
         }
     }
 }
