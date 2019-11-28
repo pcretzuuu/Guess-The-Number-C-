@@ -29,7 +29,7 @@ namespace Homework___Guess_the_number
                 }
             }
 
-            Console.WriteLine("Yuhuu! You guessed the number");
+            Console.WriteLine("Yuhuu! You guessed the number!");
         }
     }
 }
