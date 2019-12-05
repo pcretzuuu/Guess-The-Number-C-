@@ -10,36 +10,40 @@ namespace Homework___Guess_the_number
     {
         static void Main(string[] args)
         {
-            Random r = new Random();
-            int g = r.Next(0, 100);
-            int t = 0;
-            bool ok = false;
+            Random randomNumber = new Random();
+            int numberToGuess = randomNumber.Next(0, 100);
+            int tries = 0;
+            bool isGuessed = false;
 
             Console.WriteLine("You have 10 tries to guess the number. Enter a number.");
-            int n = int.Parse(Console.ReadLine());
+            int inputNumber = int.Parse(Console.ReadLine());
 
-            while (t < 9 && ok==false)
+            while (tries < 9 && isGuessed==false)
             {
-                t++;
-                if (n < g)
+                tries++;
+                if (inputNumber < numberToGuess)
                 {
-                    Console.WriteLine("Number is too small. You have {0} tries left. Enter another number: ", 10-t);
-                    n = int.Parse(Console.ReadLine());
-                } else if (n > g)
+                    Console.WriteLine("Number is too small. You have {0} tries left. Enter another number: ", 10 - tries);
+                    inputNumber = int.Parse(Console.ReadLine());
+                }
+                else if (inputNumber > numberToGuess)
                 {
-                    Console.WriteLine("Number is too big. You have {0} tries left. Enter another number: ", 10 - t);
-                    n = int.Parse(Console.ReadLine());
-                } else
+                    Console.WriteLine("Number is too big. You have {0} tries left. Enter another number: ", 10 - tries);
+                    inputNumber = int.Parse(Console.ReadLine());
+                }
+                else
                 {
-                    ok = true;
+                    isGuessed = true;
                 }
             }
 
-            if (ok == true) {
-                Console.WriteLine("Yuhuu! You guessed the number!");
-            } else
+            if (isGuessed == true)
             {
-                Console.WriteLine("Sorry! You've reached the max number of tries. The number was: {0}", g);
+                Console.WriteLine("Yuhuu! You guessed the number!");
+            }
+            else
+            {
+                Console.WriteLine("Sorry! You've reached the max number of tries. The number was: {0}", numberToGuess);
             }
             
         }
